@@ -10,6 +10,7 @@ public class HomePage {
     WebDriver driver;
     WebDriverWait wait;
     By headerBy = By.id("top");
+    By makeAppointmentButtonBy = By.id("btn-make-appointment");
 
     public HomePage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -18,6 +19,16 @@ public class HomePage {
 
     public void loadHomePage() {
         driver.get("https://katalon-demo-cura.herokuapp.com");
+        WebElement headerElement = driver.findElement(headerBy);
+        Assert.assertTrue(headerElement.isDisplayed());
+        System.out.println("Homepage loaded properly.");
+    }
+    public void clickAppointmentButton() {
+        WebElement makeAppointmentButton = driver.findElement(makeAppointmentButtonBy);
+        makeAppointmentButton.click();
+        // itt azért nincs sout mert a validációja a LoginPage-en van
+    }
+    public void amIOnHomePage() {
         WebElement headerElement = driver.findElement(headerBy);
         Assert.assertTrue(headerElement.isDisplayed());
         System.out.println("Homepage loaded properly.");
